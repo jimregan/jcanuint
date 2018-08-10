@@ -67,11 +67,11 @@ public class Score {
         }
     }
     public double getScore(String dialect) {
-        if("C".equalsIgnoreCase(dialect)) {
+        if(dialect.toLowerCase().charAt(0) == 'c') {
             return C;
-        } else if("M".equalsIgnoreCase(dialect)) {
+        } else if(dialect.toLowerCase().charAt(0) == 'm') {
             return M;
-        } else if("U".equalsIgnoreCase(dialect)) {
+        } else if(dialect.toLowerCase().charAt(0) == 'u') {
             return U;
         } else {
             return 0.0;
