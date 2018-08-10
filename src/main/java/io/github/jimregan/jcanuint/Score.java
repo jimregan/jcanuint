@@ -57,14 +57,22 @@ public class Score {
         return (M == C && C == U && U == 0.0);
     }
 
-    public String getWinningDialect() {
-        if(C >= M && C >= U) {
-            return "C";
-        } else if(M > C && M >= U) {
-            return "M";
-        } else {
-            return "U";
+    public String getResult() {
+        if(isZero()) {
+            return "N";
         }
+        String res = "C";
+        if(M > C) {
+            if(U > M) {
+                return "U";
+            } else {
+                res = "M";
+            }
+       }
+       if(Math.abs(C) != 0 && Math.abs(C - M / C) < 0.1) {
+           return "N";
+       }
+       return res;
     }
     public double getScore(String dialect) {
         if(dialect.toLowerCase().charAt(0) == 'c') {
