@@ -24,7 +24,7 @@
 
 package io.github.jimregan.jcanuint;
 
-public class Element {
+public class Score {
     private double C;
     private double M;
     private double U;
@@ -57,9 +57,39 @@ public class Element {
         return (M == C && C == U && U == 0.0);
     }
 
-    public Element(double C, double M, double U) {
+    public String getWinningDialect() {
+        if(C >= M && C >= U) {
+            return "C";
+        } else if(M > C && M >= U) {
+            return "M";
+        } else {
+            return "U";
+        }
+    }
+    public double getScore(String dialect) {
+        if("C".equalsIgnoreCase(dialect)) {
+            return C;
+        } else if("M".equalsIgnoreCase(dialect)) {
+            return M;
+        } else if("U".equalsIgnoreCase(dialect)) {
+            return U;
+        } else {
+            return 0.0;
+        }
+    }
+    public Score() {
+        this.M = 0.0;
+        this.C = 0.0;
+        this.U = 0.0;
+    }
+    public Score(double C, double M, double U) {
         this.M = M;
         this.C = C;
         this.U = U;
+    }
+    public Score(String C, String M, String U) {
+        this.M = Double.parseDouble(M);
+        this.C = Double.parseDouble(C);
+        this.U = Double.parseDouble(U);
     }
 }

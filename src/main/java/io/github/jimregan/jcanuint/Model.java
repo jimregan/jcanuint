@@ -27,14 +27,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Model {
-    private Map<String, Element> words;
-    private Map<String, Element> regexes;
+    private Map<String, Score> words;
+    private Map<String, Score> regexes;
     public Model() {
-        this.words = new HashMap<String, Element>();
-        this.regexes = new HashMap<String, Element>();
+        this.words = new HashMap<String, Score>();
+        this.regexes = new HashMap<String, Score>();
     }
     static String getSimpleString(String s) {
-        String work = s;
         if(s.charAt(0) == '^' && s.endsWith("[ ]")) {
             return s.substring(1, s.length() - 3);
         }
