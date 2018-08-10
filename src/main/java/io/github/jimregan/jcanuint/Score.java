@@ -68,7 +68,9 @@ public class Score {
             } else {
                 res = "M";
             }
-       }
+       } else if(U > C) {
+            return "U";
+        }
        if(Math.abs(C) != 0 && Math.abs(C - M / C) < 0.1) {
            return "N";
        }
