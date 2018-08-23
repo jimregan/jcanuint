@@ -1,0 +1,3 @@
+[submodule "src/main/resources/canuint"]
+	path = src/main/resources/canuint
+	url = https://github.com/kscanne/canuint
