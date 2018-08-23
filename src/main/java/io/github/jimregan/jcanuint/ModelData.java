@@ -7,11 +7,14 @@ import java.util.Scanner;
 import java.util.Set;
 
 final class ModelData {
-    private static Model model = loadModel("/canuint/model.txt");
+    private static Model model = loadModel("/model.txt");
     private static Model loadModel(String path) {
         Model mdl = new Model();
         Set<String> lines = new HashSet<String>();
-        InputStream is =ModelData.class.getResourceAsStream(path);
+        InputStream is = ModelData.class.getResourceAsStream(path);
+        if(is == null) {
+            return null;
+        }
         Scanner scanner = new Scanner(is, "utf-8");
         try {
             while (scanner.hasNextLine()) {
