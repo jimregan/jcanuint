@@ -49,7 +49,7 @@ public class Utils {
             if(i == 0) {
                 buf.add(tokens[0] + " ");
                 buf.add(tokens[0] + " " + tokens[1]);
-                buf.add(tokens[0] + " " + tokens[1] + tokens[2]);
+                buf.add(tokens[0] + " " + tokens[1] + " " + tokens[2]);
             } else if(k == tokens.length - 1) {
                 buf.add(tokens[tokens.length - 1] + " " + tokens[tokens.length]);
             } else if(k == tokens.length) {
