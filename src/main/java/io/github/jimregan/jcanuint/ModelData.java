@@ -7,7 +7,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 final class ModelData {
-    private static Model loadModel(String path) throws Exception {
+    private static Model model = loadModel("/canuint/model.txt");
+    private static Model loadModel(String path) {
         Model mdl = new Model();
         Set<String> lines = new HashSet<String>();
         InputStream is =ModelData.class.getResourceAsStream(path);
@@ -25,8 +26,12 @@ final class ModelData {
                 mdl.add(parts);
             }
         } catch (Exception e) {
-            throw new Exception(e);
+            return null;
         }
         return mdl;
+    }
+
+    public static Model getModel() {
+        return model;
     }
 }

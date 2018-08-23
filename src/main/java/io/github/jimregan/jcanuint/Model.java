@@ -25,7 +25,6 @@ package io.github.jimregan.jcanuint;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class Model {
     private Map<String, Score> words;
