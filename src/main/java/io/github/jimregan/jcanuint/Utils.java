@@ -30,12 +30,13 @@ public class Utils {
     static String[] simple_bigrams(String s) {
         ArrayList<String> buf = new ArrayList<String>();
         String[] tokens = s.split("\\s+");
-        for(int i = 0, j = 1; j <= tokens.length; i++, j++) {
+        for(int i = 0, j = 1; j < tokens.length; i++, j++) {
             if(i == 0) {
                 buf.add(tokens[0] + " ");
                 buf.add(tokens[0] + " " + tokens[1]);
-            } else if(j == tokens.length) {
-                buf.add(tokens[tokens.length] + " ");
+            } else if(j == tokens.length - 1) {
+                buf.add(tokens[i] + " " + tokens[j]);
+                buf.add(tokens[tokens.length - 1] + " ");
             } else {
                 buf.add(tokens[i] + " " + tokens[j]);
             }
@@ -45,15 +46,15 @@ public class Utils {
     static String[] simple_trigrams(String s) {
         ArrayList<String> buf = new ArrayList<String>();
         String[] tokens = s.split("\\s+");
-        for(int i = 0, j = 1, k = 2; k <= tokens.length; i++, j++, k++) {
+        for(int i = 0, j = 1, k = 2; k < tokens.length; i++, j++, k++) {
             if(i == 0) {
                 buf.add(tokens[0] + " ");
                 buf.add(tokens[0] + " " + tokens[1]);
                 buf.add(tokens[0] + " " + tokens[1] + " " + tokens[2]);
+            } else if(k == tokens.length - 2) {
+                buf.add(tokens[tokens.length - 2] + " " + tokens[tokens.length - 1]);
             } else if(k == tokens.length - 1) {
-                buf.add(tokens[tokens.length - 1] + " " + tokens[tokens.length]);
-            } else if(k == tokens.length) {
-                buf.add(tokens[tokens.length] + " ");
+                buf.add(tokens[tokens.length - 1] + " ");
             } else {
                 buf.add(tokens[i] + " " + tokens[j] + " " + tokens[k]);
             }
