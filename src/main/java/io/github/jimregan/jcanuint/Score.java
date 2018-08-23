@@ -102,4 +102,9 @@ public class Score {
         this.C = Double.parseDouble(C);
         this.U = Double.parseDouble(U);
     }
+    public void addScore(Score sc) {
+        this.M += sc.M;
+        this.C += sc.C;
+        this.U += sc.U;
+    }
 }

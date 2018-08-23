@@ -43,7 +43,7 @@ public class Model {
         return s.contains("(") || s.contains("?") || s.contains("[");
     }
     public void addWord(String w, String C, String M, String U) {
-        words.put(w, new Score(C, M, U));
+        words.put(w + " ", new Score(C, M, U));
     }
     public void addRegex(String w, String C, String M, String U) {
         regexes.put(w, new Score(C, M, U));
@@ -57,5 +57,26 @@ public class Model {
     }
     public void add(String[] s) {
         add(s[0], s[1], s[2], s[3]);
+    }
+    public Score checkNGram(String s) {
+        Score out = new Score();
+        for(Map.Entry<String, Score> ws : words.entrySet()) {
+            if(s.startsWith(ws.getKey())) {
+                out.addScore(ws.getValue());
+            }
+        }
+        for(Map.Entry<String, Score> re : regexes.entrySet()) {
+            if(s.matches(re.getKey())) {
+                out.addScore(re.getValue());
+            }
+        }
+        return out;
+    }
+    public Score checkNGrams(String[] ngrams) {
+        Score out = new Score();
+        for(String ngram : ngrams) {
+            out.addScore(checkNGram(ngram));
+        }
+        return out;
     }
 }
