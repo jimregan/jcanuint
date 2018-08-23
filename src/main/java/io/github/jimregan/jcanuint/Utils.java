@@ -49,12 +49,12 @@ public class Utils {
         for(int i = 0, j = 1, k = 2; k < tokens.length; i++, j++, k++) {
             if(i == 0) {
                 buf.add(tokens[0] + " ");
-                buf.add(tokens[0] + " " + tokens[1]);
+                buf.add(tokens[0] + " " + tokens[1] + " ");
                 buf.add(tokens[0] + " " + tokens[1] + " " + tokens[2]);
-            } else if(k == tokens.length - 2) {
-                buf.add(tokens[tokens.length - 2] + " " + tokens[tokens.length - 1]);
             } else if(k == tokens.length - 1) {
-                buf.add(tokens[tokens.length - 1] + " ");
+                buf.add(tokens[i] + " " + tokens[j] + " " + tokens[k]);
+                buf.add(tokens[j] + " " + tokens[k] + " ");
+                buf.add(tokens[k] + " ");
             } else {
                 buf.add(tokens[i] + " " + tokens[j] + " " + tokens[k]);
             }
