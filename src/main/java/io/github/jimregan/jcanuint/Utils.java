@@ -42,4 +42,22 @@ public class Utils {
         }
         return buf.toArray(new String[0]);
     }
+    static String[] simple_trigrams(String s) {
+        ArrayList<String> buf = new ArrayList<String>();
+        String[] tokens = s.split("\\s+");
+        for(int i = 0, j = 1, k = 2; k <= tokens.length; i++, j++, k++) {
+            if(i == 0) {
+                buf.add(tokens[0] + " ");
+                buf.add(tokens[0] + " " + tokens[1]);
+                buf.add(tokens[0] + " " + tokens[1] + tokens[2]);
+            } else if(k == tokens.length - 1) {
+                buf.add(tokens[tokens.length - 1] + " " + tokens[tokens.length]);
+            } else if(k == tokens.length) {
+                buf.add(tokens[tokens.length] + " ");
+            } else {
+                buf.add(tokens[i] + " " + tokens[j] + " " + tokens[k]);
+            }
+        }
+        return buf.toArray(new String[0]);
+    }
 }
