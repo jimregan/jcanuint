@@ -25,6 +25,7 @@ package io.github.jimregan.jcanuint;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Model {
     private Map<String, Score> words;
@@ -41,5 +42,21 @@ public class Model {
     }
     private static boolean isRegexLike(String s) {
         return s.contains("(") || s.contains("?") || s.contains("[");
+    }
+    public void addWord(String w, String C, String M, String U) {
+        words.put(w, new Score(C, M, U));
+    }
+    public void addRegex(String w, String C, String M, String U) {
+        regexes.put(w, new Score(C, M, U));
+    }
+    public void add(String w, String C, String M, String U) {
+        if(getSimpleString(w).equals(w)) {
+            addRegex(w, C, M, U);
+        } else {
+            addWord(w, C, M, U);
+        }
+    }
+    public void add(String[] s) {
+        add(s[0], s[1], s[2], s[3]);
     }
 }
