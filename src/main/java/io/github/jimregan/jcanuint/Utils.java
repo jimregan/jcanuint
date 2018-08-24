@@ -24,7 +24,9 @@
 
 package io.github.jimregan.jcanuint;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Utils {
     static String[] simple_bigrams(String s) {
@@ -70,4 +72,25 @@ public class Utils {
         sb.append(s[s.length - 1]);
         return sb.toString();
     }
+    static String[] slurpFile(InputStreamReader isr) throws Exception {
+        List<String> buf = new ArrayList<String>();
+        BufferedReader br = new BufferedReader(isr);
+        String line;
+        while((line = br.readLine()) != null) {
+            if(!"".equals(line)) {
+                buf.add(line);
+            }
+        }
+        return buf.toArray(new String[0]);
+    }
+    static String[] slurpFile(InputStream is) throws Exception {
+        return slurpFile(new InputStreamReader(is));
+    }
+    static String[] slurpFile(FileInputStream is) throws Exception {
+        return slurpFile(new InputStreamReader(is));
+    }
+    static String[] slurpFile(File f) throws Exception {
+        return slurpFile(new FileInputStream(f));
+    }
+
 }
