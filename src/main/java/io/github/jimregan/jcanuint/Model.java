@@ -59,16 +59,13 @@ public class Model {
         add(s[0], s[1], s[2], s[3]);
     }
     public Score checkNGram(String s) {
-        System.out.println("ng: " + s);
         Score out = new Score();
         for(Map.Entry<String, Score> ws : words.entrySet()) {
-            System.out.println("wd: " + ws.getKey());
             if(s.startsWith(ws.getKey())) {
                 out.addScore(ws.getValue());
             }
         }
         for(Map.Entry<String, Score> re : regexes.entrySet()) {
-            System.out.println("re: " + re.getKey());
             if(s.matches(re.getKey())) {
                 out.addScore(re.getValue());
             }
@@ -88,8 +85,5 @@ public class Model {
     }
     public Score checkTokens(String[] s) {
         return checkString(Utils.join(s));
-    }
-    public void stat() {
-        System.out.println("words: " + this.words.entrySet().size() + ", regexes: " + this.regexes.entrySet().size());
     }
 }
