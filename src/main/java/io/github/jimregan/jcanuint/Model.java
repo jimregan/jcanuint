@@ -79,4 +79,17 @@ public class Model {
         }
         return out;
     }
+    public Score checkString(String s) {
+        String[] trigrams = Utils.simple_trigrams(s);
+        return checkNGrams(trigrams);
+    }
+    public Score checkTokens(String[] s) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < s.length - 1; i++) {
+            sb.append(s[i]);
+            sb.append(" ");
+        }
+        sb.append(s[s.length - 1]);
+        return checkString(sb.toString());
+    }
 }
