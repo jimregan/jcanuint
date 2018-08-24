@@ -52,20 +52,23 @@ public class Model {
         if(getSimpleString(w).equals(w)) {
             addRegex(w, C, M, U);
         } else {
-            addWord(w, C, M, U);
+            addWord(getSimpleString(w), C, M, U);
         }
     }
     public void add(String[] s) {
         add(s[0], s[1], s[2], s[3]);
     }
     public Score checkNGram(String s) {
+        System.out.println("ng: " + s);
         Score out = new Score();
         for(Map.Entry<String, Score> ws : words.entrySet()) {
+            System.out.println("wd: " + ws.getKey());
             if(s.startsWith(ws.getKey())) {
                 out.addScore(ws.getValue());
             }
         }
         for(Map.Entry<String, Score> re : regexes.entrySet()) {
+            System.out.println("re: " + re.getKey());
             if(s.matches(re.getKey())) {
                 out.addScore(re.getValue());
             }
