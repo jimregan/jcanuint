@@ -86,4 +86,7 @@ public class Model {
     public Score checkTokens(String[] s) {
         return checkString(Utils.join(s));
     }
+    public void stat() {
+        System.out.println("words: " + this.words.entrySet().size() + ", regexes: " + this.regexes.entrySet().size());
+    }
 }
