@@ -107,4 +107,16 @@ public class Score {
         this.C += sc.C;
         this.U += sc.U;
     }
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("C: ");
+        sb.append(this.C);
+        sb.append("; ");
+        sb.append("M: ");
+        sb.append(this.M);
+        sb.append("; ");
+        sb.append("U: ");
+        sb.append(this.U);
+        return sb.toString();
+    }
 }
