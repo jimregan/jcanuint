@@ -19,4 +19,11 @@ public class UtilsTest {
         String inp = "a simple test string";
         assertArrayEquals(exp, Utils.simple_trigrams(inp));
     }
+
+    @Test
+    public void join() {
+        String[] inp = new String[]{"a", "simple", "test", "string"};
+        String exp = "a simple test string";
+        assertEquals(exp, Utils.join(inp));
+    }
 }

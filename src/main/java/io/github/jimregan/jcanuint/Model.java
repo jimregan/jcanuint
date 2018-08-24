@@ -84,12 +84,6 @@ public class Model {
         return checkNGrams(trigrams);
     }
     public Score checkTokens(String[] s) {
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < s.length - 1; i++) {
-            sb.append(s[i]);
-            sb.append(" ");
-        }
-        sb.append(s[s.length - 1]);
-        return checkString(sb.toString());
+        return checkString(Utils.join(s));
     }
 }

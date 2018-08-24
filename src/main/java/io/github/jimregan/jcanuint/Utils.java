@@ -61,4 +61,13 @@ public class Utils {
         }
         return buf.toArray(new String[0]);
     }
+    static String join(String[] s) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < s.length - 1; i++) {
+            sb.append(s[i]);
+            sb.append(" ");
+        }
+        sb.append(s[s.length - 1]);
+        return sb.toString();
+    }
 }
